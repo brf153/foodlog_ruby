@@ -1,6 +1,8 @@
 <% content_for :title do %>
-  Foodlog &ndash; <%= DateTime.now %>
-<% end %>
+  <div class="title has-text-centered">
+    Foodlog &ndash; <%= DateTime.now.to_time.to_formatted_s(:nice_date) %>
+  </div>
+  <% end %>
 
 <div id="entries" class="container mt-4">
   <h1 class="title has-text-centered">Entries</h1>
