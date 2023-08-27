@@ -11,9 +11,6 @@
         <div class="card">
           <div class="card-content">
             <%= render entry %>
-            <p class="subtitle">
-              <%= link_to "Show this entry", entry, class: "button is-primary" %>
-            </p>
             <p class="italic">
               Logged <%= time_ago_in_words(entry.created_at) %>
             </p>
