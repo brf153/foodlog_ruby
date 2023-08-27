@@ -2,31 +2,35 @@
   Foodlog &ndash; <%= DateTime.now %>
 <% end %>
 
-<h1>Entries</h1>
+<div id="entries" class="container mt-4">
+  <h1 class="title has-text-centered">Entries</h1>
 
-<div id="entries">
-  <div class="columns mt-6 is-centered"> 
+  <div class="columns is-multiline is-centered">
     <% @entries.each do |entry| %>
-      <div class="column is-one-quarter">
+      <div class="column is-one-quarter mb-4">
         <div class="card">
-          <%= render entry %>
-          <p>
-            <%= link_to "Show this entry", entry %>
-          </p>
-          <p class="italic">Logged <%= time_ago_in_words(entry.created_at) %></p>
+          <div class="card-content">
+            <%= render entry %>
+            <p class="subtitle">
+              <%= link_to "Show this entry", entry, class: "button is-primary" %>
+            </p>
+            <p class="italic">
+              Logged <%= time_ago_in_words(entry.created_at) %>
+            </p>
+          </div>
+          <footer class="card-footer">
+            <%= link_to 'Show', entry, class: "card-footer-item button is-link" %>
+            <%= link_to 'Edit', edit_entry_path(entry), class: "card-footer-item button is-info" %>
+            <%= link_to 'Destroy', entry, method: :delete, data: { confirm: "Are you sure?" }, class: "card-footer-item button is-danger" %>
+          </footer>
         </div>
       </div>
     <% end %>
   </div>
-
-  <div class="card-footer">
-    <% @entries.each do |entry| %>
-      <%= link_to 'Show', entry, class: "card-footer-item" %>
-      <%= link_to 'Edit', edit_entry_path(entry), class: "card-footer-item" %>
-      <%= link_to 'Destroy', entry, method: :delete, data: { confirm: "Are you sure?" }, class: "card-footer-item" %>
-    <% end %>
-  </div>
 </div>
 
-<%= link_to "New entry", new_entry_path %>
+<div class="has-text-centered mt-4">
+  <%= link_to "New entry", new_entry_path, class: "button is-success" %>
+</div>
+
 
